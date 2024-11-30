@@ -21,7 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "app.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -61,7 +61,11 @@ static void MX_USART1_UART_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+int _write(int file, char *ptr, int len) {
+  UNUSED(file);
+  HAL_UART_Transmit(&huart1, (uint8_t*)ptr, len, 50);
+  return len;
+}
 /* USER CODE END 0 */
 
 /**
@@ -97,7 +101,7 @@ int main(void)
   MX_SPI2_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-
+  app_main();
   /* USER CODE END 2 */
 
   /* Infinite loop */
