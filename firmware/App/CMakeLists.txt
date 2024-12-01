@@ -5,6 +5,8 @@ add_library(app INTERFACE)
 
 enable_language(C ASM)
 
+add_subdirectory(Drivers/enc28j60)
+
 target_compile_definitions(app INTERFACE
 )
 
@@ -21,4 +23,5 @@ target_link_directories(app INTERFACE
 
 target_link_libraries(app INTERFACE
     stm32cubemx
+    enc28j60
 )
