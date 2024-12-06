@@ -81,7 +81,6 @@ void Error_Handler(void);
 #define ETH_MOSI_GPIO_Port GPIOB
 #define ETH_IRQ_Pin GPIO_PIN_8
 #define ETH_IRQ_GPIO_Port GPIOA
-#define ETH_IRQ_EXTI_IRQn EXTI9_5_IRQn
 
 /* USER CODE BEGIN Private defines */
 
