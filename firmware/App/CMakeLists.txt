@@ -31,8 +31,12 @@ target_include_directories(app INTERFACE
     ${LWIP_INCLUDE_DIRS}
 )
 
+file(GLOB_RECURSE APP_SOURCES
+    ${CMAKE_CURRENT_SOURCE_DIR}/Src/*.c
+)
+
 target_sources(app INTERFACE
-    ${CMAKE_CURRENT_SOURCE_DIR}/Src/app.c
+    ${APP_SOURCES}
 )
 
 target_link_directories(app INTERFACE
