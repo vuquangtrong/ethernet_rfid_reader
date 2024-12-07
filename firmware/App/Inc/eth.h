@@ -16,7 +16,7 @@
 
 #define IP_ADDR_0 192
 #define IP_ADDR_1 168
-#define IP_ADDR_2 1
+#define IP_ADDR_2 0
 #define IP_ADDR_3 10
 
 #define NETMASK_ADDR_0 255
@@ -26,7 +26,7 @@
 
 #define GATEWAY_ADDR_0 192
 #define GATEWAY_ADDR_1 168
-#define GATEWAY_ADDR_2 1
+#define GATEWAY_ADDR_2 0
 #define GATEWAY_ADDR_3 1
 
 /* Methods of Ethernet Interface */

@@ -3,6 +3,7 @@
 #include "main.h"
 #include <lwip/etharp.h>
 #include <lwip/netif.h>
+#include <string.h>
 
 #if DEBUG_ENC_RX_TX
 #include <stdio.h>
@@ -224,12 +225,15 @@ static void ethernetif_input(struct netif *netif) {
 }
 
 static err_t ethernetif_init(struct netif *netif) {
+    /* Interface name */
     netif->name[0] = IFNAME0;
     netif->name[1] = IFNAME1;
 
+    /* Output methods */
     netif->output = etharp_output;
     netif->linkoutput = low_level_output;
 
+    /* Hardware init */
     low_level_init(netif);
 
     printf("ethernetif_init done\n");
@@ -244,8 +248,13 @@ void eth_init() {
              IP_ADDR_2,
              IP_ADDR_3);
 
+    /* Set IP Address and processing methods */
     netif_add(&eth0, &ipaddr, IP4_ADDR_ANY, IP4_ADDR_ANY, NULL, &ethernetif_init, &netif_input);
+
+    /* Set the default interface */
     netif_set_default(&eth0);
+
+    /* When Link (HW) is up, process to set interface up */
     if (netif_is_link_up(&eth0)) {
         netif_set_up(&eth0);
     }
@@ -253,5 +262,6 @@ void eth_init() {
 }
 
 void eth_input() {
+    /* read data and process it */
     ethernetif_input(&eth0);
 }
